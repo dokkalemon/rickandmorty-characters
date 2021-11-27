@@ -1,5 +1,5 @@
 <template>
-    <main class="debug">
+    <main class="">
         
         <div class="cards" v-if="characterArray !== null">
         <Card 

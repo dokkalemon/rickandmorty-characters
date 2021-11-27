@@ -4,8 +4,8 @@
 
       <div class="input">
           <form action="">
-              <input type="text" placeholder="Inserisci il nome per la ricerca">
-              <button type="submit">Search</button>
+              <input type="text" placeholder="Inserisci il nome per la ricerca" v-model="searchChar" @keyup.enter="$emit('searchCharacter', searchChar)">
+              <button type="submit" @click.prevent="$emit('searchCharacter', searchChar)">Search</button>
               <button class="reset" type="reset">Reset</button>
           </form>
       </div>
@@ -16,7 +16,16 @@
 export default {
     name: 'Header',
 
+
+data() {
+    return {
+        searchChar: '',
+    }
+},
+
+
 }
+
 </script>
 
 <style scoped lang="scss">

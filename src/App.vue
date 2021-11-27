@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <!-- Header -->
-    <Header />
+    <Header @searchCharacter="search"/>
 
   <!-- Main -->
-    <Main :characterArray="characterList"/>
+    <Main :characterArray="filterCharacter"/>
 
   </div>
 </template>
@@ -22,21 +22,38 @@ export default {
   },
 
       created() {
-        this.prova()
+        this.takeDate()
     },
     
     data() {
         return {
             characterList: null,
+            characterSearch: '',
         }
     },
 
+    computed: {
+      filterCharacter() {
+        if (this.characterSearch === '') {
+          return this.characterList
+        }
+
+        return this.characterList.filter( item => {
+          return item.name.toLowerCase().includes(this.characterSearch.toLowerCase())
+        })
+      }
+    },
+
     methods: {
-        prova() {
+        takeDate() {
             axios.get('https://api.sampleapis.com/rickandmorty/characters')
             .then(result => {
                 this.characterList = result.data
             })
+        },
+
+        search(dato) {
+          this.characterSearch = dato;
         }
     }
 
