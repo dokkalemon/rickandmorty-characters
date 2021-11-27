@@ -1,0 +1,18 @@
+/* IMPORT VARS */
+@import '@/styles/vars.scss';
+
+/* GLOBAL SETTING */
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $primary-font
+}
+
+.debug {
+    border: 1px solid red;
+}
